@@ -10,15 +10,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'  # או כל גרסה שאתה צריך
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install fastapi[all] requests pytest python-dotenv
 
-      - name: Make test.sh executable
-        run: chmod +x ./test.sh
-
-      - name: Run test script
-        run: ./test.sh
+      - name: Run tests with pytest
+        run: pytest test.py
