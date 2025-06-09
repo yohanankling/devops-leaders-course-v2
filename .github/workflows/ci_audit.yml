@@ -3,7 +3,7 @@ name: Pip Audit Security Scan
 on:
   push:
     branches:
-      - main
+      - session1
   pull_request:
 
 jobs:
