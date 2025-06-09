@@ -1,0 +1,26 @@
+name: Bandit Security Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  bandit-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install bandit
+        run: pip install bandit
+
+      - name: Run bandit scan
+        run: bandit -r . --exclude ./venv -lll
