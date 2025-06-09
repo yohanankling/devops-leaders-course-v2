@@ -1,0 +1,14 @@
+name: CI Pipeline
+on: [push]
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Make run_tests.sh executable
+        run: chmod +x ./run_tests.sh
+
+      - name: Run test script
+        run: ./run_tests.sh
