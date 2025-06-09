@@ -1,0 +1,26 @@
+name: Pip Audit Security Scan
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  pip-audit-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install pip-audit
+        run: pip install pip-audit
+
+      - name: Run pip-audit scan
+        run: pip-audit -r requirements.txt
